@@ -21,7 +21,11 @@ import com.felipemotagodoy.Projeto_Web_Services_Com_Spring_Boot_e_JPA_Hibernate.
 import com.felipemotagodoy.Projeto_Web_Services_Com_Spring_Boot_e_JPA_Hibernate.services.DocumentService;
 import com.felipemotagodoy.Projeto_Web_Services_Com_Spring_Boot_e_JPA_Hibernate.services.UserService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
+@Api(tags = "Exemplo API")
 @RequestMapping(value = "/users")
 public class UserResource {
 
@@ -44,6 +48,7 @@ public class UserResource {
 	}
 
 	@PostMapping
+    @ApiOperation("Incluir usuário")
 	public ResponseEntity<User> insert(@RequestBody User user, 
 			@RequestParam("token") String token) {
 		user = userService.insert(user);
